@@ -72,8 +72,7 @@ const App: () => Node = () => {
             <Image style={{
                 width: 100,
                 height: '100%',
-                objectFit: 'cover',
-                marginRight: 10
+                marginRight: 10,
             }}
                    source={{uri: (item.thumbArt || 'https://www.darren-young.com/wp-content/uploads/2015/04/default-placeholder.png')}}/>
             <Text style={{
