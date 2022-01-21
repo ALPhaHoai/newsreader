@@ -2,15 +2,41 @@ import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import type {Node} from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import type {Node} from 'react';
 import HomeScreen from "./screens/HomeScreen";
 import NewsScreen from "./screens/NewsScreen";
 
 import * as RNLocalize from "react-native-localize";
 import DeviceInfo from 'react-native-device-info';
+import {Text, View} from "react-native";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function SettingsScreen() {
+    return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text>Settings!</Text>
+        </View>
+    );
+}
+
+
+function MainScreen() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{title: 'Welcome'}}
+            />
+            <Stack.Screen name="News" component={NewsScreen}/>
+        </Stack.Navigator>
+    );
+}
 
 const App: () => Node = () => {
     useEffect(() => {
@@ -39,15 +65,22 @@ const App: () => Node = () => {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen
-                        name="Home"
-                        component={HomeScreen}
-                        options={{title: 'Welcome'}}
-                    />
-                    <Stack.Screen name="News" component={NewsScreen}/>
-                </Stack.Navigator>
+                <Tab.Navigator screenOptions={{
+                    headerShown: false
+                }}>
+                    <Tab.Screen options={{
+                        tabBarIcon: ({focused, color, size}) => {
+                            return <Ionicons name={'newspaper' + focused ? '-outline' : ''} size={size} color={color}/>
+                        }
+                    }} name="News" component={MainScreen}/>
+                    <Tab.Screen options={{
+                        tabBarIcon: ({focused, color, size}) => {
+                            return <Ionicons name={'settings' + focused ? '-outline' : ''} size={size} color={color}/>
+                        }
+                    }} name="Settings" component={SettingsScreen}/>
+                </Tab.Navigator>
             </NavigationContainer>
+
         </SafeAreaProvider>
     );
 };
