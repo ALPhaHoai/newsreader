@@ -6,8 +6,10 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "eject": "react-native eject",
+    "upgrade": "react-native upgrade",
+    "lint": "eslint .",
+    "test": "jest"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
@@ -15,13 +17,14 @@
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
     "react": "17.0.2",
-    "react-native": "^0.67.0",
+    "react-native": "0.67.1",
     "react-native-render-html": "^6.3.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
+    "react-native-eject": "^0.1.2",
     "@babel/runtime": "^7.16.5",
     "@react-native-community/eslint-config": "^3.0.1",
     "babel-jest": "^27.4.5",
