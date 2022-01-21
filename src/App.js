@@ -70,12 +70,13 @@ const App: () => Node = () => {
                 }}>
                     <Tab.Screen options={{
                         tabBarIcon: ({focused, color, size}) => {
-                            return <Ionicons name={'newspaper' + focused ? '-outline' : ''} size={size} color={color}/>
+                            return <Ionicons name={'newspaper' + (focused ? '-outline' : '')} size={size}
+                                             color={color}/>
                         }
                     }} name="News" component={MainScreen}/>
                     <Tab.Screen options={{
                         tabBarIcon: ({focused, color, size}) => {
-                            return <Ionicons name={'settings' + focused ? '-outline' : ''} size={size} color={color}/>
+                            return <Ionicons name={'settings' + (focused ? '-outline' : '')} size={size} color={color}/>
                         }
                     }} name="Settings" component={SettingsScreen}/>
                 </Tab.Navigator>
